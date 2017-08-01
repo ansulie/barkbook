@@ -1,0 +1,33 @@
+<div class="main-wrapper">
+<%= render "search_form"  %>
+<div class="user-park">
+
+
+<% if @parks %>
+    <% @parks.each do |park| %>
+    <div class="park">
+        <h3 ><%= park['name'] %></h3>
+        <p ><%= park['rating']%></p>
+
+
+        <iframe
+              width="300"
+              height="225"
+              frameborder="0" style="border:0"
+              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBamVRahAneL2IwgWRAiZ0e2vgWamP7an4&q=
+              <%= park['geometry']['location']['lat'] %>,<%= park['geometry']['location']['lng'] %>"
+              allowfullscreen>
+            </iframe>
+            <%= form_for(:park, url: '/parks/update', :method => "put") do |f| %>
+          <%= f.hidden_field(:name, :value => park['name']) %>
+          <%= f.hidden_field(:location, :value => park['rating'])%>
+          <%= f.hidden_field(:user, :value => session[:user_id])%>
+          <%=f.hidden_field(:latitude, :value => park['geometry']['location']['lat']) %>
+          <%=f.hidden_field(:longitude, :value => park['geometry']['location']['lng']) %>
+          <%= f.submit "Save", :class => "button viewButton" %>
+        <%end%>
+      </div>
+    <%end%>
+<%end%>
+</div>
+</div>

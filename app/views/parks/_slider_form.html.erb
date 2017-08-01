@@ -1,0 +1,7 @@
+<div class="main-wrapper">
+<%= form_tag(parks_path, :method => "post", id: "range-form") do %>
+<%= range_field(:range, in: 1..1500) %>
+<%= submit_tag "Search", :name => nil %>
+<% end %>
+
+</div>

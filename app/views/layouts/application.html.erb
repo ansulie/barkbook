@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BarkBook</title>
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        <%= csrf_meta_tags %>
+
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
+
+    <body>
+        <nav>
+            <h1>BarkBook</h1>
+                    <div class="container-fluid">
+            <% if @logged_in %>
+                        <div class="nav-links">
+                            <a><%= link_to("Search", parks_path) %></a>
+                            <a><%= link_to("Profile", current_user) %></a>
+                            <a><%= link_to "Friends", {controller: "friendship", action: "show", id: current_user.id}%></a>
+                            <a><%= link_to("Events", events_path) %></a>
+                            <a><%= link_to("Logout", logout_path, method:"delete") %></a>
+                        </div>
+                    </div>
+            <% else %>
+                <div class="nav-links">
+                    <a><%= link_to("Log In", login_path) %></a>
+                    <a><%= link_to("Sign Up", signup_path) %></a>
+                </div>
+            <% end %>
+        </nav>
+
+        <%= yield %>
+    </body>
+</html>

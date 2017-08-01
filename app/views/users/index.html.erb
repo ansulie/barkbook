@@ -1,0 +1,14 @@
+<div class="main-wrapper">
+<div class="page-title">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+<h1>Users</h1>
+
+	<%= form_tag("/users/search",:remote=>true, :class => "search") do %>
+      <%= text_field_tag(:q, '', :placeholder => "Search") %>
+      <%= submit_tag("➔", :id => "submit", :class => "pop-button") %>
+    <% end %>
+   
+  </div>
+</div>
+
+

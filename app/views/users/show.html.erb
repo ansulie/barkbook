@@ -1,0 +1,51 @@
+<div class="main-wrapper">
+<h1> woof woof!<%= current_user.name %> </h1>
+
+<h5>This is <%= @user.name %>'s page</h5>
+
+
+
+
+
+<%= render "shared/friends_form" %>
+<%@user_all.each do |friend|%>
+	<% if @params === friend.name%>
+	<div class="friends">
+		<%=link_to(friend.name, "#{friend.id}")%>
+		<%=friend.address%>
+	</div>
+	<%end%>
+<%end%>
+
+<div class="user-park">
+ <%@park.each do |park|%>
+
+	<div class="park">
+		<li><%= link_to(park.name, "/parks/#{park.id}" )%></li>
+		<iframe
+		  width="260"
+		  height="225"
+		  frameborder="0" style="border:0"
+		  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBamVRahAneL2IwgWRAiZ0e2vgWamP7an4&q=
+		  <%= park.latitude %>,<%= park.longitude %>"
+		  allowfullscreen>
+		</iframe>
+ <%=  button_to 'Delete', "/parks/#{park.id}", :method => "delete" %>
+ <%=  button_to "add reply", "/park_comments/new", :method => 'get', :controller => 'park_comments', params: { park_id: park.id, redirect: params[:id] } %>
+ <% ParkComment.where("park_id = #{park[:id]}").each do |comment| %>
+     <% owner = User.find(comment.user_id) %>
+     <% if comment.user_id == session[:user_id] %>
+         <div class="park-comment">
+             <%= render "shared/park_comment_form", {park_comment: comment} %>
+             <%= button_to 'Delete', "/park_comments/#{comment.id}", :method => "delete", params: { redirect: params[:id] } %>
+         </div>
+     <%else%>
+         <div class="park-comment">
+             <p><%=owner.name %>:    <%=comment.content %></p>
+         </div>
+     <%end%>
+ <%end%>
+ 	</div>
+ <%end%>
+</div>
+</div>

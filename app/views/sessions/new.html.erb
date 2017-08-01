@@ -1,0 +1,17 @@
+<div class="main-wrapper">
+<div class="container1">
+<h1>Log In</h1>
+
+<%= form_for(:session, url: login_path) do |f| %>
+  <%= f.label :email %> <br>
+  <%= f.email_field :email %> <br><br>
+
+  <%= f.label :password %> <br>
+  <%= f.password_field :password %> <br><br>
+
+  <%= f.submit("Log In") %>
+<% end %>
+
+<p><%= link_to('Sign Up', "/signup") %></p>
+</div>
+</div>

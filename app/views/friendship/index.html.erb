@@ -1,0 +1,16 @@
+<div class="main-wrapper">
+    <h1> Browse for friends below!</h1>
+
+    <% @users.each do |user| %>
+        <% unless user.id == current_user.id %>
+            <div class="user">
+                <%=link_to user.name, {controller: "users", action: "show", id: user.id}%>
+                <% unless User.find(user.id).friends.find_by id: current_user.id %>
+                <%=button_to 'add friend!', "/friendship", :method => "create", params: { friend_id: user.id }  %>
+                <%else%>
+                <%=button_to 'already friends!', "/users/#{user.id}", :method => "get", :controller => 'users'%>
+                <%end%>
+            </div>
+        <%end%>
+    <%end%>
+</div>

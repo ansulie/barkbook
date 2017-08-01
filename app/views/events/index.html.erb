@@ -1,0 +1,68 @@
+<div class="main-wrapper">
+
+<%= month_calendar do |date| %>
+  <%= date.day %>
+<% end %>
+
+
+
+<h1>Hello <%= User.find(session[:user_id]).name %>, here are your events</h1>
+
+<%=  button_to 'Add Event', "/events/new", :method => "get" %>
+
+<div class="user-park">
+    <div class="block-body-header">
+        <h2>Your Events</h2>
+    </div>
+
+    <% @events[:user_events].try(:each) do |event| %>
+        <div class="event">
+            <h3><%=event.name%></h3>
+            <%= render "shared/event_form", {event: event} %>
+            <%=  button_to 'Delete', "/events/#{event.id}", :method => "delete" %>
+            <%=  button_to 'Join Event!/commment', "/event_comments/new", method: :get, params: { event_id: event.id} %>
+        <% EventComment.where("event_id = #{event[:id]}").each do |comment| %>
+            <% owner = User.find(comment.user_id) %>
+            <% if comment.user_id == session[:user_id] %>
+                <div class="event-comment">
+                    <%= render "shared/event_comment_form", {event_comment: comment} %>
+                    <%= button_to 'Delete', "/event_comments/#{comment.id}", :method => "delete" %>
+                </div>
+            <%else%>
+                <div class="event-comment">
+                    <p><%=owner.name %>:    <%=comment.content %></p>
+                </div>
+            <%end%>
+        <%end%>
+        </div>
+    <%end%>
+    <div class="block-body-header">
+        <h2>Your Friend's Events</h2>
+    </div>
+    <% @events[:user_friends_events].try(:each) do |friend_eventlist| %>
+        <%friend_eventlist.try(:each) do |event| %>
+            <div class="event">
+                <h2>Event: </h2>
+                <h3><%=event.name%></h3>
+                <h5><%=event.location%></h5>
+                <h5><%=event.event_date%></h5>
+                <%=  button_to 'Join Event!/commment', "/event_comments/new", method: :get, params: { event_id: event.id} %>
+            <h3>event comments </h3>
+            <% EventComment.where("event_id = #{event[:id]}").each do |comment| %>
+                <% owner = User.find(comment.user_id) %>
+                <% if comment.user_id == session[:user_id] %>
+                    <div class="event-comment">
+                        <%= render "shared/event_comment_form", {event_comment: comment} %>
+                        <%= button_to 'Delete', "/event_comments/#{comment.id}", :method => "delete" %>
+                    </div>
+                <%else%>
+                    <div class="event-comment">
+                        <p><%=owner.name %>:    <%=comment.content %></p>
+                    </div>
+                <%end%>
+            <%end%>
+            </div>
+        <%end%>
+    <%end%>
+</div>
+</div>

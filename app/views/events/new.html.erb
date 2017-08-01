@@ -1,0 +1,24 @@
+<div class="main-wrapper">
+New Event
+
+<%= form_for(@event, :html => {:class => "form"}) do |f| %>
+  <div class="input-group">
+    <%= f.label :Event %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="input-group">
+    <%= f.label :Location %>
+    <%= f.text_field :location %>
+  </div>
+  <div class="input-group">
+    <%= f.label :Date %>
+    <%= f.text_field :event_date %>
+  </div>
+  <%= f.hidden_field :user_id, :value => session[:user_id] %>
+  <%= f.submit %>
+<% end %>
+
+
+
+
+</div>

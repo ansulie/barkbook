@@ -1,0 +1,230 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+
+
+nav {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    -ms-align-items: center;
+    align-items: center;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
+    -o-justify-content: space-between;
+    justify-content: space-between;
+    color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    background-color: black;
+    z-index: 4;
+    position: fixed;
+    width: 100vw;
+    height: 50px;
+    top: 0;
+}
+
+nav .nav-links {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    height: 100%;
+}
+
+nav h1 {
+    margin: 20px;
+    padding: 0 10px;
+    font-weight: 400;
+}
+
+.nav-links a {
+    padding: 10px 12px;
+    margin-right: 20px;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    -o-justify-content: center;
+    justify-content: center;
+    -ms-align-items: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 1.1em;
+}
+
+.nav-links a:hover {
+    background-color: gray;
+    color: white;
+}
+
+.main-wrapper {
+    margin-top: 20%;
+    margin-left: 30px;
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+}
+
+.rest-cont {
+    background-color: #D0D0D0;
+    background-position: 100px 0;
+}
+
+.signup-image {
+    height: 700px;
+    width: 700px;
+    margin: auto;
+    background-position: 160px 0;
+    background-image: url("https://s-media-cache-ak0.pinimg.com/736x/ae/26/20/ae26206eb91cc1629b8279a3ed594bd3--funny-pugs-too-funny.jpg");
+    background-repeat: no-repeat;
+}
+
+.container1 {
+    height: 600px;
+    width: 800px;
+    margin: auto;
+    background-position: 160px 0;
+    background-image: url("http://cdn.attackofthecute.com/August-05-2012-02-06-05-tqqqq.jpg");
+    background-repeat: no-repeat;
+}
+
+
+/*users page */
+
+.user-park {
+    width: 100vw;
+    flex-wrap: wrap;
+    display: inline-flex;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+div .park {
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 50px;
+    margin-left: 20px;
+    border-radius: 25px;
+    border: 3px solid black;
+    padding: 20px;
+}
+
+div .event {
+    width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 50px;
+    margin-left: 20px;
+    border-radius: 25px;
+    border: 3px solid black;
+    padding: 20px;
+}
+
+.block-body-header {
+    display: block;
+    width: 100vw;
+    text-align: center;
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
+    margin-bottom: 10px;
+}
+
+.event-comment: {
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 0;
+    margin: 0;
+}
+
+.search-form {
+    margin-bottom: 30px;
+}
+
+input, select {
+    padding: 8px 1px;
+    border: 0px solid transparent;
+    border-bottom: 1px solid #111;
+    font-size: 1em;
+    outline: 0px solid transparent;
+}
+
+label {
+    padding: 24px 0 8px;
+    text-transform: capitalize;
+    color: #111;
+}
+
+input:focus {
+    color: #00ACC1;
+}
+
+input[type="submit"] {
+    margin: 20px 0 5px;
+    background-color: black;
+    color: white;
+    align-self: flex-end;
+    padding: 12px 20px;
+    border-bottom: 3px solid #111;
+    border-radius: 4px;
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+input[type="submit"]:hover {
+    cursor: pointer;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+select {
+    -webkit-appearance: none;
+    background: transparent;
+    background-image: none;
+    border-radius: 0px;
+}
+
+select:focus {
+    outline: none;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+    outline: none;
+    font-size: 1em;
+    padding: 8px;
+}
+
+a {
+    font-size: 20px;
+    color: black;
+    text-decoration: none;
+    text-decoration-style: none;
+}
+
+.friends {
+    display: flex;
+    margin-left: 30px;
+    height: 30px;
+}
+
+p {
+    font-size: 10px;
+}

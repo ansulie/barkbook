@@ -1,0 +1,7 @@
+<div class="main-wrapper">
+
+<%= form_tag(user_path, :method => "get", id: "friend-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Dog Friend" %><br>
+    <%= submit_tag "Search", :name => nil %>
+<% end %>
+</div>

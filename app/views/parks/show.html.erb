@@ -1,0 +1,20 @@
+<div class="main-wrapper">
+<div class="info">
+
+      <h2 class="card-title">Comments</h2>
+      <div class="comments">
+        <div class="new-comment">
+         </div>
+         </div>
+
+<h1><%= @park.name %></h1>
+<h2> rating <%= @park.location %></h2>
+ <%= button_to 'Delete', "/parks/#{params[:id]}", :method => "delete" %>
+<iframe
+      width="600"
+      height="450"
+      frameborder="0" style="border:0"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBamVRahAneL2IwgWRAiZ0e2vgWamP7an4&q=
+      <%= @park.latitude %>,<%= @park.longitude %>"
+      allowfullscreen>
+    </iframe>

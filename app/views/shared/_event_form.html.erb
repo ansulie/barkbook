@@ -1,0 +1,16 @@
+<%= form_for(event, :html => {:class => "form"}) do |f| %>
+  <div class="input-group">
+    <%= f.label :Event %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="input-group">
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+  </div>
+  <div class="input-group">
+    <%= f.label 'When?' %>
+    <%= f.text_field :event_date %>
+  </div>
+  <%= f.hidden_field :event_id, :value => event.id %>
+  <%= f.submit %>
+<% end %>

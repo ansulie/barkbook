@@ -1,0 +1,11 @@
+<%= form_for(park_comment, :html => {:class => "form"}) do |f| %>
+  <div class="input-group">
+    <%= f.label 'your comment' %>
+    <%= f.text_field :content %>
+  </div>
+  <%= f.hidden_field :id, :value => park_comment.id %>
+  <%= f.hidden_field :user_id, :value => session[:user_id] %>
+  <%= f.hidden_field :park_id, :value => park_comment[:park_id] %>
+  <%= f.hidden_field :redirect, :value => params[:id] %>
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,11 @@
+<div class="main-wrapper">
+    <h1> All your friends</h1>
+    <%=link_to "Add new friends!", {controller: "friendship", action: "index"}%>
+
+    <% @friends.each do |user| %>
+        <div class="user">
+            <%=link_to user.name, {controller: "users", action: "show", id: user.id}%>
+            <%=button_to 'remove friend :(', "/friendship/#{user.id}", :method => "delete" %>
+        </div>
+    <%end%>
+</div>
